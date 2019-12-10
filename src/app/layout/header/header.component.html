@@ -1,0 +1,28 @@
+<mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}" color="primary">
+  <button md-icon-button (click)="sidenav.toggle()" class="md-icon-button sidenav-toggle-button"
+    [hidden]="sidenav.opened">
+          <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+  </button>
+  <h1 class="component-title">
+    <a class="title-link">{{title}}</a>
+  </h1>
+  <span class="toolbar-filler"></span>
+  <!--<button id="button-login" md-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
+  <button id="button-logout" md-button>Log Out</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" *ngIf="shouldRun">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+               (closed)="events.push('close!')">
+    Sidenav content
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+    <p>Events:</p>
+    <div class="example-events">
+      <div *ngFor="let e of events">{{e}}</div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

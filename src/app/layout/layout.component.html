@@ -1,0 +1,13 @@
+
+<p>
+    layout works!
+  </p>
+<app-layout-header [inputSideNav]="sideNav"></app-layout-header>
+<mat-sidenav-container>
+  <mat-sidenav #sideNav (click)="sideNav.toggle()" mode="side">
+    <a routerLink="/">List Products</a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
